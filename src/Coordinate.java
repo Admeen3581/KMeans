@@ -31,6 +31,26 @@ public abstract class Coordinate
    }
 
    /**
+    * Updates the value of the x-coordinate.
+    *
+    * @param x the new x-coordinate value to be set
+    */
+   public void setX(int x)
+   {
+      this.x = x;
+   }
+
+   /**
+    * Updates the value of the y-coordinate.
+    *
+    * @param y the new y-coordinate value to be set
+    */
+   public void setY(int y)
+   {
+      this.y = y;
+   }
+
+   /**
     * Representation of the coordinate in the format "(x, y)".
     *
     * @return a string representing the x and y values of the coordinate

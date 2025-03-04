@@ -5,18 +5,27 @@
  */
 public class Point extends Coordinate
 {
-   private int x;
-   private int y;
-   private int closestCentroid;
+   private Centroid closestCentroid;
 
    public Point(int x, int y)
    {
       super(x,y);
-      this.closestCentroid = -1;
+      this.closestCentroid = null;
    }
 
-   public int getClosestCentroid()
+   public Centroid getClosestCentroid()
    {
-      return closestCentroid;
+      return this.closestCentroid;
+   }
+
+   public void setClosestCentroid(Centroid c)
+   {
+      this.closestCentroid = c;
+   }
+
+   @Override
+   public String toString()
+   {
+      return super.toString() + "- closest Centroid: " + this.closestCentroid;
    }
 }

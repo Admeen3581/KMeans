@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author Adam Long
  */
 
-public class FileReader
+public class FileEditor
 {
 
    private static final String PATH = "inputData.txt";
@@ -22,8 +22,12 @@ public class FileReader
     */
    private static Scanner createScannerObject() throws FileNotFoundException
    {
-      Scanner scan = new Scanner(FILE);
-      return scan;
+      return new Scanner(FILE);
+   }
+
+   private static void exportResultsFile()
+   {
+      //implement results to file.
    }
 
    /**
@@ -49,8 +53,7 @@ public class FileReader
 
       while (scan.hasNextLine())
       {
-         String[] line = scan.nextLine().split(",");
-         data.add(new Point(Integer.parseInt(line[0]), Integer.parseInt(line[1])));
+         data.add(new Point(scan.nextInt(), scan.nextInt()));
       }
 
       return data;
