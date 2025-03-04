@@ -1,7 +1,7 @@
 //Imports
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -34,7 +34,7 @@ public class FileReader
     * @return a HashMap containing the parsed integer key-value pairs from the file
     * @throws FileNotFoundException if the file cannot be found
     */
-   public static HashMap<Integer, Integer> sortData()
+   public static ArrayList<Point> sortData()
    {
       Scanner scan;
       try
@@ -44,12 +44,13 @@ public class FileReader
       {
          throw new RuntimeException("Data file not found: " + PATH);
       }
-      HashMap<Integer, Integer> data = new HashMap<>();
+
+      ArrayList<Point> data = new ArrayList<>();
 
       while (scan.hasNextLine())
       {
          String[] line = scan.nextLine().split(",");
-         data.put(Integer.parseInt(line[0]), Integer.parseInt(line[1]));
+         data.add(new Point(Integer.parseInt(line[0]), Integer.parseInt(line[1])));
       }
 
       return data;
