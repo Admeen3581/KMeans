@@ -3,41 +3,20 @@
 /**
  * @author Adam Long
  */
-public class Point
+public class Point extends Coordinate
 {
    private int x;
    private int y;
-   private int cluster;
+   private int closestCentroid;
 
    public Point(int x, int y)
    {
-      this.x = x;
-      this.y = y;
-      this.cluster = -1;
+      super(x,y);
+      this.closestCentroid = -1;
    }
 
-   public int getX()
+   public int getClosestCentroid()
    {
-      return this.x;
-   }
-
-   public int getCluster()
-   {
-      return cluster;
-   }
-
-   public int getY()
-   {
-      return y;
-   }
-
-   @Override
-   public String toString()
-   {
-      return "Point{" +
-            "x=" + x +
-            ", y=" + y +
-            ", cluster=" + cluster +
-            '}';
+      return closestCentroid;
    }
 }
