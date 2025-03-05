@@ -1,6 +1,5 @@
 //Imports
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,8 +10,9 @@ import java.util.Scanner;
 public class FileEditor
 {
 
-   private static final String PATH = "inputData.txt";
-   private static final File FILE = new File(PATH);
+   private static final String INPUT_PATH = "inputData.txt";
+   private static final String OUTPUT_PATH = "outputData.txt";
+   private static final File FILE = new File(INPUT_PATH);
 
    /**
     * Creates a new Scanner object for reading data files.
@@ -23,11 +23,6 @@ public class FileEditor
    private static Scanner createScannerObject() throws FileNotFoundException
    {
       return new Scanner(FILE);
-   }
-
-   private static void exportResultsFile()
-   {
-      //implement results to file.
    }
 
    /**
@@ -44,7 +39,8 @@ public class FileEditor
       try
       {
          scan = createScannerObject();
-      } catch (FileNotFoundException e)
+      }
+      catch (FileNotFoundException e)
       {
          e.printStackTrace();
          return null;
@@ -58,5 +54,42 @@ public class FileEditor
       }
 
       return data;
+   }
+
+   /**
+    * Appends the given data in the format "x, y, cluster" to a text file.
+    * Each data entry is written on a new line and separated by tab characters.
+    *
+    * @param x the x-coordinate value to be written to the file
+    * @param y the y-coordinate value to be written to the file
+    * @param cluster the cluster number associated with the coordinates
+    */
+   public static void fileData(int x, int y, int cluster)
+   {
+      try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_PATH, true)))
+      {
+         // Write data in the format "x,y,cluster"
+         writer.write(x + "\t\t" + y + "\t\t" + cluster);
+         writer.newLine();
+      }
+      catch (IOException e)
+      {
+         e.printStackTrace();
+      }
+   }
+
+   /**
+    * Clears the content of a file by overwriting it with an empty string.
+    */
+   public static void clearFile()
+   {
+      try (BufferedWriter writer = new BufferedWriter(new FileWriter(OUTPUT_PATH, false)))
+      {
+         writer.write("");
+      }
+      catch (IOException e)
+      {
+         e.printStackTrace();
+      }
    }
 }

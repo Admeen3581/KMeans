@@ -1,9 +1,10 @@
+//Imports
+
 import java.util.ArrayList;
 
 /**
  * @author Adam Long
  */
-
 public class Main
 {
     public static void main(String[] args)
@@ -11,12 +12,6 @@ public class Main
         //Terminal test
         System.out.println("\n--System works--\n\n");
 
-        ArrayList<Point> list = FileEditor.sortData();
-
-        for (Point p : list)
-        {
-            System.out.println(p);
-        }
 
         KMeansAlg alg = new KMeansAlg(2);
         for (int k=0; k<5; k++)
@@ -25,6 +20,12 @@ public class Main
             alg.centerCentroidWithCluster();
         }
 
+        ArrayList<Point> points = alg.getPoints();
+        FileEditor.clearFile();
+        for (Point p : points)
+        {
+            FileEditor.fileData(p.getX(), p.getY(), p.getClosestCentroid().getCENTROID_ID());
+        }
 
     }
 }

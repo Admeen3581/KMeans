@@ -28,6 +28,16 @@ public class KMeansAlg
       buildCentroids();
    }
 
+   /**
+    * Retrieves the list of points that are currently part of the dataset
+    * being processed by the KMeans algorithm.
+    *
+    * @return an ArrayList containing Point objects representing the dataset
+    */
+   public ArrayList<Point> getPoints()
+   {
+      return points;
+   }
 
    /**
     * Determines the bounds of the metaphorical graph.
