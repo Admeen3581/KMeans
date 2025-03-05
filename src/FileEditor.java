@@ -46,7 +46,8 @@ public class FileEditor
          scan = createScannerObject();
       } catch (FileNotFoundException e)
       {
-         throw new RuntimeException("Data file not found: " + PATH);
+         e.printStackTrace();
+         return null;
       }
 
       ArrayList<Point> data = new ArrayList<>();
