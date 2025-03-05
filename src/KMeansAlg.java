@@ -11,6 +11,7 @@ public class KMeansAlg
    private ArrayList<Centroid> centroids;
    private final int K;
    private int minX, maxX, minY, maxY;
+   private static int iterCount = 0;
 
    /**
     * Initializes a new instance of the KMeansAlg class to perform k-means clustering.
@@ -136,5 +137,26 @@ public class KMeansAlg
       }
    }
 
+   /**
+    * Checks for centroid movement
+    *
+    * @return true if 1+ centroid has moved in previous shift
+    */
+   public boolean centroidMovementControl()
+   {
+      for(Centroid c : centroids)
+      {
+         if(c.hasMoved())
+         {
+            return true;
+         }
+      }
+      if(iterCount < 5)
+      {
+         iterCount++;
+         return true;
+      }
+      return false;
+   }
 
 }

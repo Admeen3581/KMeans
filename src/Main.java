@@ -1,6 +1,7 @@
 //Imports
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author Adam Long
@@ -13,9 +14,16 @@ public class Main
         System.out.println("\n--System works--\n\n");
 
 
-        KMeansAlg alg = new KMeansAlg(4);
-        for (int k=0; k<12; k++)
+        //Recieves K input
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter K: ");
+        int k = s.nextInt();
+
+
+        KMeansAlg alg = new KMeansAlg(k);
+        while(alg.centroidMovementControl())
         {
+            System.out.println("check");
             alg.bondPointsToCentroids();
             alg.centerCentroidWithCluster();
         }
